@@ -16,18 +16,18 @@ inputs:
   memorySize: 128 # 内存大小，单位MB
   timeout: 900 # 超时时间，单位秒
   events: # 触发器
-    - timer: # 签到
+    - timer: # 获取互助码
         parameters:
-          name: jd_bean_sign
+          name: jd_get_share_code
+          cronExpression: "0 0 12 * * WED *"
+          enable: true
+          argument: jd_get_share_code
+    - timer: # 签到 #京小超兑换奖品 #摇京豆 #京东汽车 #京东汽车兑换
+        parameters:
+          name: jd_bean_sign_jd_blueCoin_jd_club_lottery_car_car_exchange
           cronExpression: "0 0 0 * * * *"
           enable: true
-          argument: jd_bean_sign
-    - timer: #京小超兑换奖品 #摇京豆 #京东汽车 #京东汽车兑换
-        parameters:
-          name: jd_blueCoin_jd_club_lottery_car_car_exchange
-          cronExpression: "0 0 0 * * * *"
-          enable: true
-          argument: jd_blueCoin&jd_club_lottery&jd_car&jd_car_exchange
+          argument: jd_bean_sign&jd_blueCoin&jd_club_lottery&jd_car&jd_car_exchange
     - timer: #东东农场 #东东萌宠 #口袋书店 #京喜农场
         parameters:
           name: jd_fruit_jd_pet_bookshop_jxnc
